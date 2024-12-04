@@ -16,6 +16,12 @@ public class ImgService {
     public String getGptImg(String imgurl) {
         String url = "/gptimg/" + imgurl;
         try {
+
+            System.out.println(webClient.get()
+                    .uri(url)
+                    .retrieve()
+                    .bodyToMono(String.class)
+                    .block());
             // WebClient 사용: GET 요청
             return webClient.get()
                     .uri(url)
@@ -29,7 +35,7 @@ public class ImgService {
     }
 
     public String getClovaImg(String imgurl) {
-        String url = "/gptimg/" + imgurl;
+        String url = "/clovaimg/" + imgurl;
         try {
             // WebClient 사용: GET 요청
             return webClient.get()
